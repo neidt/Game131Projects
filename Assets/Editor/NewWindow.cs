@@ -7,29 +7,17 @@ using System.Text;
 
 public class NewWindow : EditorWindow
 {
-    [MenuItem("Tools/Level Editor")]
-    //using the unity manual for the init part
-    // Add menu named "My Window" to the Window menu
-    private static NewWindow instance;
-
-    private static void ShowLevelEditor()
-    {
-       NewWindow.ShowWindow();
-    }
+    [MenuItem("Window/Level Editor")]
     public static void ShowWindow()
     {
-        instance = EditorWindow.GetWindow<NewWindow>();
-        instance.titleContent = new GUIContent("Level Editor");
+        GetWindow<NewWindow>("New Object Window");
     }
-
 
     private float currentX = 0.0f;
     private void OnGUI()
     {
-
-        //GUILayout.Label("");
-
-        if (GUILayout.Button("Create Obstacle"))
+        //new obstacle button
+        if (GUILayout.Button("Create New Obstacle"))
         {
             string[] wallGuids = AssetDatabase.FindAssets("wallBasePrefab");
             StringBuilder guidBuilder = new StringBuilder();
@@ -56,5 +44,35 @@ public class NewWindow : EditorWindow
             }
 
         }
-    }
+
+        //new target button
+        if (GUILayout.Button("Create New Target"))
+        {
+            string[] targetGuids = AssetDatabase.FindAssets("Target");
+            StringBuilder guidBuilder = new StringBuilder();
+            foreach (string targetGuid in targetGuids)
+            {
+                guidBuilder.AppendLine(targetGuid);
+            }
+            UnityEngine.MonoBehaviour.print(guidBuilder.ToString());
+
+            if (targetGuids.Length > 0)
+            {
+                string trueTargetGuid = targetGuids[0];
+                string assetPath = AssetDatabase.GUIDToAssetPath(trueTargetGuid);
+                UnityEngine.MonoBehaviour.print(assetPath);
+
+                GameObject targetTemplate = AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject)) as GameObject;
+                GameObject newTarget = GameObject.Instantiate(targetTemplate);
+                newTarget.name = targetTemplate.name;
+
+                Vector2 newTargetPos = new Vector2(0, 0);
+                newTargetPos.x = currentX;
+
+                currentX += 1f;
+            }
+
+        }
+
+    }//end onGUI
 }
