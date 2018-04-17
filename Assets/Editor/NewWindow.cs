@@ -7,7 +7,7 @@ using System.Text;
 
 public class NewWindow : EditorWindow
 {
-    [MenuItem("Window/Level Editor")]
+    [MenuItem("Tools/Level Editor Window")]
     public static void ShowWindow()
     {
         GetWindow<NewWindow>("New Object Window");
