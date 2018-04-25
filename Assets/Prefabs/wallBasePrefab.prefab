@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212787631962079030}
   - component: {fileID: 61362858746026890}
   - component: {fileID: 50238990349643910}
+  - component: {fileID: 114670391807576812}
   m_Layer: 0
   m_Name: wallBasePrefab
   m_TagString: Untagged
@@ -87,6 +88,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114670391807576812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806870685073066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0803822306b308949a1931e04e00d51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212787631962079030
 SpriteRenderer:
   m_ObjectHideFlags: 1

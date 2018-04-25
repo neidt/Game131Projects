@@ -42,7 +42,6 @@ public class NewWindow : EditorWindow
                 
                 currentX += 1f;
             }
-
         }
 
         //new target button
@@ -71,8 +70,6 @@ public class NewWindow : EditorWindow
 
                 currentX += 1f;
             }
-
         }
-
     }//end onGUI
 }
