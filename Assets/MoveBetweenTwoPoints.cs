@@ -47,4 +47,10 @@ public class MoveBetweenTwoPoints : MonoBehaviour
             return moveMagnitude - toCurrentTarget.magnitude;
         }
     }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(startPosition, endPosition);
+    }
 }
