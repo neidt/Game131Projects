@@ -6,10 +6,16 @@ using UnityEditor;
 [CustomEditor(typeof(EventCatcher))]
 public class EventCatcherEditor : Editor
 {
+    MoveBetweenTwoPoints moveScript;
+    SerializedProperty position;
     public override void OnInspectorGUI()
     {
         Event currentEvent = Event.current;
-
+        moveScript = ((MonoBehaviour)target).gameObject.GetComponent<MoveBetweenTwoPoints>();
+        //show the start and end positions
+        GUILayout.Label("Start Position: " + moveScript.startPosition);
+        //GUILayout.Label("startPosition" + startPosition);
+        GUILayout.Label("End Position: " + moveScript.endPosition);
         base.OnInspectorGUI();
 
         //i dont even know what this is doing???
@@ -40,7 +46,7 @@ public class EventCatcherEditor : Editor
                 {
                     //????
                 }
-
+                
                 currentEvent.Use();
                 break;
             case EventType.KeyUp:
