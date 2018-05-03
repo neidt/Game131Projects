@@ -17,7 +17,8 @@ public class MoveBetweenTwoPointsEditor : Editor
     {
         moveScript = ((MonoBehaviour)target).gameObject.GetComponent<MoveBetweenTwoPoints>();
         obstacle = ((MonoBehaviour)target).gameObject.GetComponent<Transform>();
-
+        GUIStyle style = new GUIStyle();
+        style.richText = true;
         /*
         startPosition = this.serializedObject.FindProperty("startPosition");
         endPosition = this.serializedObject.FindProperty("endPosition");*/
@@ -25,9 +26,9 @@ public class MoveBetweenTwoPointsEditor : Editor
         base.OnInspectorGUI();
 
         //show the start and end positions
-        GUILayout.Label("Start Position (hold 'a' to change): " + moveScript.startPosition);
-        GUILayout.Label("End Position (hold 'd' to change): " + moveScript.endPosition);
-        GUILayout.Label("Obstacle Position (hold 's' to change): " + obstacle.transform.position);
+        GUILayout.Label("<color=green>Start Position (hold 'a' to change):</color> " + moveScript.startPosition,style);
+        GUILayout.Label("<color=red>End Position (hold 'd' to change):</color> " + moveScript.endPosition,style);
+        GUILayout.Label("Obstacle Position (hold 's' to change): " + obstacle.transform.position,style);
         this.serializedObject.ApplyModifiedProperties();
     }
     void OnEnable()
@@ -87,7 +88,6 @@ public class MoveBetweenTwoPointsEditor : Editor
                     moveScript.startPosition.y = obstacle.transform.position.y;
                     moveScript.endPosition.x = obstacle.transform.position.x + (trackLength / 2);
                     moveScript.endPosition.y = obstacle.transform.position.y;  
-
                 }
                 //currentEvent.Use();
                 break;

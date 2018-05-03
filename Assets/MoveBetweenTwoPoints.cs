@@ -52,5 +52,8 @@ public class MoveBetweenTwoPoints : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(startPosition, endPosition);
+        Gizmos.DrawSphere(startPosition, .5f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(endPosition, .5f);
     }
 }
