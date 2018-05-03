@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 1076182505}
   - component: {fileID: 1076182504}
   - component: {fileID: 1076182506}
+  - component: {fileID: 1076182507}
   m_Layer: 0
   m_Name: wallBase
   m_TagString: Untagged
@@ -541,6 +542,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0803822306b308949a1931e04e00d51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1076182507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076182501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f55d5399a78f84987aba8b8d2f2f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: -6.397668, y: -1.7905129, z: 0}
+  endPosition: {x: -3.8253226, y: 3.527983, z: 0}
+  isMovingToStart: 1
+  speed: 4
 --- !u!1 &1463119650
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,8 +588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f55d5399a78f84987aba8b8d2f2f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: -4.5732, y: 5.3092933, z: 0}
-  endPosition: {x: 3.7138786, y: 5.3092933, z: 0}
+  startPosition: {x: -4.416267, y: 4.744632, z: 0}
+  endPosition: {x: 3.787427, y: 4.67511, z: 0}
   isMovingToStart: 1
   speed: 4
 --- !u!114 &1463119652
@@ -683,7 +699,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1463119650}
   m_LocalRotation: {x: -0, y: -0, z: -0.00007335027, w: 1}
-  m_LocalPosition: {x: -0.4296609, y: 5.3092933, z: 0}
+  m_LocalPosition: {x: -0.41870356, y: 4.43178, z: 0}
   m_LocalScale: {x: 3.5968194, y: 2.1473553, z: 2.1473553}
   m_Children: []
   m_Father: {fileID: 0}
