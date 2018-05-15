@@ -7,4 +7,4 @@ PhysicsMaterial2D:
   m_PrefabInternal: {fileID: 0}
   m_Name: pmatBouncy
   friction: 0.1
-  bounciness: 0.6116883
+  bounciness: 0.4611872
