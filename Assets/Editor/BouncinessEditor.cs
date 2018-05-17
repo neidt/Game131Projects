@@ -1,10 +1,15 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using System.Text;
+using System.Collections;
+using System.Collections.Generic;
 
 public class BouncinessEditor : EditorWindow
 {
-    public float hSliderVal = 0.5f;
+    public float hBounceSliderVal = 0.5f;
+    private PhysicsMaterial2D bounceMat;
+    SerializedProperty bounce;
+
     [MenuItem("Tools/Bounciness Editor")]
     public static void ShowWindow()
     {
@@ -12,9 +17,9 @@ public class BouncinessEditor : EditorWindow
     }
     private void OnGUI()
     {
-        hSliderVal = GUILayout.HorizontalSlider(hSliderVal, 0.0f, 1.0f);
+        hBounceSliderVal = GUILayout.HorizontalSlider(hBounceSliderVal, 0.0f, 1.0f);
         GUILayout.Label("Bounciness");
-        GUILayout.Label(hSliderVal.ToString());
+        GUILayout.Label(hBounceSliderVal.ToString());
 
         if (GUILayout.Button("Change Bounciness"))
         {
@@ -33,12 +38,8 @@ public class BouncinessEditor : EditorWindow
                 string assetPath = AssetDatabase.GUIDToAssetPath(trueMatGuid);
                 UnityEngine.MonoBehaviour.print(assetPath);
 
-                //GameObject matTemplate = AssetDatabase.LoadAssetAtPath(assetPath, typeof(PhysicsMaterial2D)) as GameObject;
-                //matTemplate.GetComponent<PhysicsMaterial2D>().bounciness = hSliderVal;
-                PhysicsMaterial2D material = AssetDatabase.LoadAssetAtPath(assetPath, typeof(PhysicsMaterial2D)) as PhysicsMaterial2D;
-                material.bounciness = hSliderVal;
-                //GameObject newWall = GameObject.Instantiate(matTemplate);
-                //newWall.name = matTemplate.name;
+                bounceMat = new PhysicsMaterial2D();
+                bounceMat.bounciness = hBounceSliderVal; 
             }
         }
     }

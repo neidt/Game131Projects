@@ -10,7 +10,12 @@ public class MoveBetweenTwoPointsEditor : Editor
     //get the script with the variables needed
     MoveBetweenTwoPoints moveScript;
     Transform obstacle;
-    
+    BoxCollider2D obstacleCollider;
+
+    public float hBounceSliderVal = 0.5f;
+    private PhysicsMaterial2D bounceMat;
+    SerializedProperty bounce;
+
     SerializedProperty position;
     Vector3 rotateVec = new Vector3(0, 0, 1);
     public float hSliderVal = 0.5f;
@@ -21,7 +26,8 @@ public class MoveBetweenTwoPointsEditor : Editor
     {
         moveScript = ((MonoBehaviour)target).gameObject.GetComponent<MoveBetweenTwoPoints>();
         obstacle = ((MonoBehaviour)target).gameObject.GetComponent<Transform>();
-       
+        obstacleCollider = ((MonoBehaviour)target).gameObject.GetComponent<BoxCollider2D>();
+
         GUIStyle style = new GUIStyle();
         style.richText = true;
         /*
@@ -30,16 +36,34 @@ public class MoveBetweenTwoPointsEditor : Editor
 
         base.OnInspectorGUI();
 
-        //bounciness editor
-        hSliderVal = GUILayout.HorizontalSlider(hSliderVal, 0.0f, 1.0f);
+        //bounciness editor??? no idea how to only change the obstacles bounce, not the material?
+        hBounceSliderVal = GUILayout.HorizontalSlider(hBounceSliderVal, 0.0f, 1.0f);
         GUILayout.Label("Bounciness");
-        GUILayout.Label(hSliderVal.ToString());
+        GUILayout.Label(hBounceSliderVal.ToString());
 
         if (GUILayout.Button("Change Bounciness"))
         {
+            
+            //bounceMat.bounciness = hBounceSliderVal;
 
-            //bounciness = hSliderVal;
+            //string[] bouncyMat = AssetDatabase.FindAssets("pMatBouncy");
+            //string[] matGuids = AssetDatabase.FindAssets("pMatBouncy");
+            //StringBuilder guidBuilder = new StringBuilder();
+            //foreach (string matGuid in matGuids)
+            //{
+            //    guidBuilder.AppendLine(matGuid);
+            //}
+            //UnityEngine.MonoBehaviour.print(guidBuilder.ToString());
 
+            //if (matGuids.Length > 0)
+            //{
+            //    string trueMatGuid = matGuids[0];
+            //    string assetPath = AssetDatabase.GUIDToAssetPath(trueMatGuid);
+            //    UnityEngine.MonoBehaviour.print(assetPath);
+
+            //    bounceMat = obstacleCollider.GetComponent<PhysicsMaterial2D>();
+            //    bounceMat.bounciness = hBounceSliderVal;
+            //}
         }
 
         //show the start and end positions
@@ -62,7 +86,7 @@ public class MoveBetweenTwoPointsEditor : Editor
         obstacle = ((MonoBehaviour)target).gameObject.GetComponent<Transform>();
         Event currentEvent = Event.current;
 
-        
+
 
 
         //get position of mouse and set the start point when holding left control
